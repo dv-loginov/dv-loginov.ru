@@ -1,0 +1,19 @@
+.MailForm{
+  background-color:rgba(72,72,72,0.4);
+  padding: 35px 35px 50px 35px;
+  width: 450px;
+  margin-top:30px;
+  border-radius: 7px;
+
+}
+@media only screen and (max-width: 580px) {
+  .MailForm{
+    left: 3%;
+    margin-right: 3%;
+    width: 88%;
+    margin-left: 0;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+}
+

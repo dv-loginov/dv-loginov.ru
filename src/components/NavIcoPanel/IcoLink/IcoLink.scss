@@ -1,0 +1,25 @@
+.IcoLink {
+  color: #7CA2E0;
+  filter: drop-shadow(0.1em 0.1em 0.2em black);
+
+  &-big{
+    font-size: calc(7px + 3.5vw);
+    padding: calc(7px + .2vw);
+    margin: 0 calc(7px + .2vw);
+  }
+
+  &-small{
+    font-size: calc(7px + 2vw);
+    margin: .7em;
+  }
+
+  :hover {
+    color: darkorange;
+    filter: drop-shadow(0.1em 0.1em 0.2em #7CA2E0);
+    cursor: pointer;
+  }
+
+  :not(hover) {
+    transition: all .5s linear;
+  }
+}
