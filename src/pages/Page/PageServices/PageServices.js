@@ -21,7 +21,7 @@ class PageServices extends Component{
           items:[
               {id: 1, text: 'html - pug'},
               {id: 2, text: 'css - scss'},
-              {id: 3, text: 'js - jquery'},
+              {id: 3, text: 'js - jquery - react'},
               {id: 4, text: 'php'},
               {id: 5, text: 'WordPress'},
           ]},

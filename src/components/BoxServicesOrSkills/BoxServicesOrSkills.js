@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const BoxServicesOrSkills=(props)=>{
 
-    const cls = ['BoxServicesOrSkills', 'BoxServicesOrSkills-'+props.type];
+    const cls = ['BoxServicesOrSkills animated zoomIn', 'BoxServicesOrSkills-'+props.type];
 
     const renderItems=()=>{
          return props.items.map(item => {

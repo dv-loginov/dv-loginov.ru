@@ -137,7 +137,7 @@ class MailForm extends Component {
     render() {
         const data=this.state.formControls;
         return (
-            <form className="MailForm" id="MailForm" onSubmit={this.submitHandler}>
+            <form className="MailForm animated zoomIn" id="MailForm" onSubmit={this.submitHandler}>
                 <Input
                     value={data.name.value}
                     type={data.name.type}
