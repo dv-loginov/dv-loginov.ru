@@ -43,14 +43,6 @@ input:focus, textarea:focus {
   background-repeat: no-repeat;
 }
 
-#name:focus{
-  background-image: url('./name.svg');
-  background-size: 30px 30px;
-  background-position: 8px 5px;
-  background-position: 11px 8px;
-  background-repeat: no-repeat;
-}
-
 #email{
   background-image: url('./email.svg');
   background-size: 30px 30px;
@@ -58,8 +50,8 @@ input:focus, textarea:focus {
   background-repeat: no-repeat;
 }
 
-#email:focus{
-  background-image: url('./email.svg');
+#comment{
+  background-image: url('../Input/comment.svg');
   background-size: 30px 30px;
   background-position: 11px 8px;
   background-repeat: no-repeat;

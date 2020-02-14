@@ -8,14 +8,14 @@ function isInvalid({valid, touched, shouldValidate}) {
 const Input=props=>{
 
     const cls = ['feedback-input'];
-
+    const InputTag=props.tag;
     if (isInvalid(props)) {
         cls.push('invalid')
     }
 
     return(
         <p className={props.id}>
-        <input name={props.id} type={props.type}
+        <InputTag name={props.id} type={props.type}
                className={cls.join(' ')}
                placeholder={props.placeholder}
                id={props.id}
