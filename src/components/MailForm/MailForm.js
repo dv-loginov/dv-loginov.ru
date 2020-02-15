@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import is from 'is_js'
 import './MailForm.scss'
 import Input from './Input/Input';
-import TextArea from './TextArea/TextArea'
+//import TextArea from './TextArea/TextArea'
 import Button from './Button/Button';
 import axios from 'axios';
 
@@ -12,6 +12,7 @@ class MailForm extends Component {
         isFormValid: false,
         formControls: {
             email: {
+                tag:'input',
                 value: '',
                 type: 'text',
                 id:'email',
@@ -25,6 +26,7 @@ class MailForm extends Component {
                 },
             },
             name: {
+                tag:'input',
                 value: '',
                 type: 'text',
                 placeholder: 'Name',
@@ -38,6 +40,7 @@ class MailForm extends Component {
                 },
             },
             text: {
+                tag:'textarea',
                 value: '',
                 id:'comment',
                 placeholder: 'Comment',
@@ -134,40 +137,32 @@ class MailForm extends Component {
              formControls, isFormValid
         });
     };
+
+    renderInputs() {
+        return Object.keys(this.state.formControls).map((controlName, index) => {
+            const control = this.state.formControls[controlName];
+            return (
+                <Input
+                    key={controlName + index}
+                    id={control.id}
+                    tag={control.tag}
+                    type={control.type}
+                    value={control.value}
+                    valid={control.valid}
+                    touched={control.touched}
+                    placeholder={control.placeholder}
+                    shouldValidate={!!control.validation}
+                    errorMessage={control.errorMessage}
+                    onChange={event => this.onChangeHandler(event, controlName)}
+                />
+            )
+        })
+    }
+
     render() {
-        const data=this.state.formControls;
         return (
-            <form className="MailForm" id="MailForm" onSubmit={this.submitHandler}>
-                <Input
-                    value={data.name.value}
-                    type={data.name.type}
-                    id={data.name.id}
-                    placeholder={data.name.placeholder}
-                    valid={data.name.valid}
-                    touched={data.name.touched}
-                    shouldValidate={!!data.name.validation}
-                    errorMessage={data.name.errorMessage}
-                    onChange={event => this.onChangeHandler(event, 'name')}
-                />
-                <Input
-                    value={data.email.value}
-                    type={data.email.type}
-                    id={data.email.id}
-                    placeholder={data.email.placeholder}
-                    valid={data.email.valid}
-                    touched={data.email.touched}
-                    shouldValidate={!!data.email.validation}
-                    errorMessage={data.email.errorMessage}
-                    onChange={event => this.onChangeHandler(event, 'email')}
-                />
-                <TextArea
-                    id={data.text.id}
-                    placeholder={data.text.placeholder}
-                    valid={data.text.valid}
-                    touched={data.text.touched}
-                    shouldValidate={!!data.text.validation}
-                    onChange={event => this.onChangeHandler(event, 'text')}
-                />
+            <form className="MailForm animated zoomIn" id="MailForm" onSubmit={this.submitHandler}>
+                {this.renderInputs()}
                 <Button />
             </form>
         );
