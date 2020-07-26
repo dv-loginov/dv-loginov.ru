@@ -1,3 +1,8 @@
 .NavIcoPanel{
   display:flex;
+  flex: 1 1 25%;
+  justify-content: flex-end;
+  align-items: center;
+  opacity: 0;
+  animation: fateOn 3s ease-in-out 7s forwards;
 }

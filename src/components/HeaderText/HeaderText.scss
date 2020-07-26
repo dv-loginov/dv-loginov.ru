@@ -6,4 +6,7 @@
   color: white;
   text-shadow: black 0.1em 0.1em 0.2em;
   font-family: Play, sans-serif;
+  flex: 1 1 50%;
+  opacity: 0;
+  animation: fateOn 3s ease-in-out 7s forwards;
 }

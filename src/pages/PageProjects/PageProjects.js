@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import './PageProjects.scss'
-import CardProject from "../../../components/CardProject/CardProject";
+import CardProject from "../../components/CardProject/CardProject";
 
 class PageProjects extends Component{
 
@@ -12,15 +12,15 @@ class PageProjects extends Component{
             {id:'4', name:'демо', href_prj:'http://dv-loginov.ru/prj/prj-4/',  tags:'html scss js'},
         ],
     };
-
-    componentDidMount() {
-        if (this.props.curTitle!=='демонстрационные работы')
-            this.onSetTitle('демонстрационные работы');
-    }
-
-    onSetTitle(name){
-        this.props.onSetTitle(name);
-    }
+    //
+    // componentDidMount() {
+    //     if (this.props.curTitle!=='демонстрационные работы')
+    //         this.onSetTitle('демонстрационные работы');
+    // }
+    //
+    // onSetTitle(name){
+    //     this.props.onSetTitle(name);
+    //}
 
     render() {
         return (

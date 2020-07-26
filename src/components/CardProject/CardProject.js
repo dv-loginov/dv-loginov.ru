@@ -3,7 +3,7 @@ import './CardProject.scss'
 
 const CardProject=(props)=>{
     return(
-        <div className = "card-wrap animated zoomIn" >
+        <div className = "card-wrap" >
             < div className = "card" >
                 < div className = "card__content" >
                     < div  className = "card__front"  style = {{backgroundImage:`url(${props.project.href_prj+'prj-cover.png'})`}} />
