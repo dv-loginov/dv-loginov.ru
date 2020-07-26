@@ -1,0 +1,55 @@
+.DilogSvg {
+  height: 200px;
+  width: 600px;
+  animation: rotateLeft 1.5s ease-in-out forwards,
+              moveToStart 3s ease-in-out 4.3s forwards,
+              hideShadow 2s ease-in-out 7s forwards;
+  position: relative;
+
+  &__shadow {
+    transition: 2s;
+    cursor: pointer;
+    border-radius: 3em;
+
+    &:hover {
+      box-shadow: 0 0 0 #000,
+      inset 0 -5px 5px #000,
+      inset 0 2px 2px #fff,
+      0 0 0 10px #000,
+      0 0 40px 10px #00a1ff,
+      0 0 0 10px #00a1ff,
+      0 0 0 12px #00a1ff;
+    }
+  }
+
+  &__link {
+    display: flex;
+    flex: 1 1 25%;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+#LeftBracket{
+  animation: moveLeft 1.5s ease-in-out 1.5s forwards;
+}
+
+#RightBracket{
+  animation: moveRight 1.5s ease-in-out 1.5s forwards;
+}
+
+#latterD{
+  animation: fateOn 2s ease-in-out 3s forwards;
+}
+
+#latterI{
+  animation: fateOn 1.5s ease-in-out 3.3s forwards;
+}
+#latterL{
+  animation: fateOn 1.5s ease-in-out 3.6s forwards;
+}
+#latterO{
+  animation: fateOn 1.5s ease-in-out 3.9s forwards;
+}
+#latterG{
+  animation: fateOn 1.5s ease-in-out 4.2s forwards;
+}
