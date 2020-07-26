@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './PageServices.scss'
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import BoxServicesOrSkills from './../../../components/BoxServicesOrSkills/BoxServicesOrSkills'
+import BoxServicesOrSkills from './../../components/BoxServicesOrSkills/BoxServicesOrSkills'
 
 class PageServices extends Component{
 
@@ -27,14 +27,14 @@ class PageServices extends Component{
           ]},
     };
 
-    componentDidMount() {
-        if (this.props.curTitle!=='выполняемые работы')
-         this.onSetTitle('выполняемые работы')
-    }
-
-    onSetTitle(name){
-        this.props.onSetTitle(name)
-    }
+    // componentDidMount() {
+    //     if (this.props.curTitle!=='выполняемые работы')
+    //      this.onSetTitle('выполняемые работы')
+    // }
+    //
+    // onSetTitle(name){
+    //     this.props.onSetTitle(name)
+    // }
 
     render() {
         return (

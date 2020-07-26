@@ -3,7 +3,7 @@ import './HeaderText.scss'
 
 const HeaderText=(props)=>{
     return(
-        <div className='HeaderText animated zoomIn'>
+        <div className='HeaderText'>
             {props.text}
         </div>
     )

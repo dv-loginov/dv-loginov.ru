@@ -23,7 +23,7 @@ const IcoLink=(props)=>{
 
     const outLink=()=>{
         return(
-            <a className={cls.join(' ')} href={props.href} title={props.title}>
+            <a className={cls.join(' ')} href={props.href} title={props.title} target="_blank" rel='noreferrer noopener'>
                 <FontAwesomeIcon icon={props.ico}/>
             </a>
         )};
