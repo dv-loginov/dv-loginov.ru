@@ -4,8 +4,9 @@
   width: 450px;
   margin-top:30px;
   border-radius: 7px;
-
+  animation: swal2-show 1.5s ease-in-out forwards;
 }
+
 @media only screen and (max-width: 580px) {
   .MailForm{
     left: 3%;

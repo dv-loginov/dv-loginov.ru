@@ -1,39 +1,21 @@
-#Button{
-  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-  float:left;
+.Button{
+  font-family: Helvetica, Arial, sans-serif;
   width: 100%;
   border: white solid 4px;
   cursor:pointer;
   background-color:#7ba2e0;
   color: white;
   font-size:24px;
+  letter-spacing: .1em;
   padding-top:22px;
   padding-bottom:22px;
   transition: all 0.3s;
   margin-top:-4px;
   font-weight:700;
-
-  &:hover{
-    background-color: rgba(0,0,0,0);
-    color: #7ba2e0;
-  }
-
 }
 
-.submit:hover {
-  color: #7ba2e0;
+.noActive{
+  cursor:default;
+  opacity: .3;
 }
-
-.ease {
-  width: 0px;
-  height: 74px;
-  background-color: white;
-  transition: .3s ease;
-}
-
-.submit:hover .ease{
-  width:100%;
-  background-color:white;
-}
-
 

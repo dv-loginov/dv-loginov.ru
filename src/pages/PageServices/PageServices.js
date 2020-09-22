@@ -1,59 +1,47 @@
-import React, {Component} from 'react'
+import React, { useState } from 'react'
 import './PageServices.scss'
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import BoxServicesOrSkills from './../../components/BoxServicesOrSkills/BoxServicesOrSkills'
+import CardWork from "../../components/CardWork/CardWork";
+import CardWorkDescription from "../../components/CardWorkDescription/CardWorkDescription";
+import jsonData from './pageServices.json';
 
-class PageServices extends Component{
+const PageServices=()=>{
 
-    state={
-      services:{
-          title:'выполняемые работы',
-          ico:['fas','tools'],
-          items:[
-              {id: 1, text: 'Валидная, кроссбраузная, адаптивная верстка HTML5, CSS3'},
-              {id: 2, text: 'Создание интерактивного функционала страницы (javascript, jQuery)'},
-              {id: 3, text: 'PHP скрипты, парсеры'},
-              {id: 4, text: 'Интеграция с WordPress'},
-          ]},
-      skills:{
-          title:'стек технологий',
-          ico:['fab','stack-overflow'],
-          items:[
-              {id: 1, text: 'html - pug'},
-              {id: 2, text: 'css - scss'},
-              {id: 3, text: 'js - jquery - react'},
-              {id: 4, text: 'php'},
-              {id: 5, text: 'WordPress'},
-          ]},
-    };
+    const [description, setDescription] = useState(null);
 
-    // componentDidMount() {
-    //     if (this.props.curTitle!=='выполняемые работы')
-    //      this.onSetTitle('выполняемые работы')
-    // }
-    //
-    // onSetTitle(name){
-    //     this.props.onSetTitle(name)
-    // }
+    const listServices=jsonData;
 
-    render() {
-        return (
-             <React.Fragment>
-                <BoxServicesOrSkills
-                    title={this.state.services.title}
-                    ico={this.state.services.ico}
-                    items={this.state.services.items}
-                    type={'services'}
-                />
-                <BoxServicesOrSkills
-                    title={this.state.skills.title}
-                    ico={this.state.skills.ico}
-                    items={this.state.skills.items}
-                    type={'skills'}
-                />
-             </React.Fragment>
-        )
+    function selectWorkHandler(id){
+        const {description}=listServices[id-1].work;
+        setDescription(description);
     }
-}
+
+    function closeDiscriptionHandler(){
+        setDescription(null);
+    }
+
+    return (
+        description
+            ?<CardWorkDescription
+                title={description.title}
+                subtitle={description.subtitle}
+                works={description.works}
+                close={closeDiscriptionHandler}
+                />
+            :listServices.map(item=>{
+                const {id, work:{service}}=item;
+                return(
+                    <CardWork
+                        key={id}
+                        id={id}
+                        ico={service.ico}
+                        title={service.title}
+                        subtitle={service.subtitle}
+                        price={service.price}
+                        onClick={selectWorkHandler}
+                    />
+                )
+            })
+    )
+};
 
 export default PageServices

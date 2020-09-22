@@ -2,11 +2,16 @@ import React from 'react'
 import './Button.scss'
 
 const Button=props=>{
+
+    const disabled=!props.valid;
+    const cls = ['Button'];
+    if (!props.valid) cls.push('noActive');
+
     return(
-        <div className="submit">
-            <input type="submit" value="ОТПРАВИТЬ" id="Button"/>
-        <div className="ease"></div>
-    </div>
+        <button  className={cls.join(' ')}
+                disabled={disabled}
+                >ОТПРАВИТЬ
+        </button>
     )
 };
 

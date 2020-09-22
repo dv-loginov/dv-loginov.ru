@@ -1,0 +1,70 @@
+.CardWorkDescription{
+  max-width: 1200px;
+  color: rgb(255,255,255,.8);
+  padding: 2em;
+  position: relative;
+  border-radius: 15px;
+  background-color: #222;
+  box-sizing: border-box;
+  margin: 2em;
+  animation: swal2-show 1.5s ease-in-out;
+
+  &__close{
+    cursor: pointer;
+    position: absolute;
+    top:10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    svg{
+      fill: white;
+      transition: all .3s;
+    &:hover{
+      fill: #7ba2e0;
+      transform: rotate(90deg);
+    }
+    }
+  }
+
+  &__title{
+    margin-top: 30px;
+    font-family: Play, sans-serif;
+    font-size: calc(30px + .6vw);
+    font-weight: bold;
+    text-align: center;
+    color: #7ba2e0;
+  }
+
+  &__subtitle{
+    font-family: Cabin, sans-serif;
+    font-weight: 400;
+    font-size: calc(12px + .6vw);
+    letter-spacing: 2px;
+    line-height: 1.6;
+    margin-top: 30px;
+    white-space: pre-line;
+  }
+
+  &__works{
+    display: flex;
+    justify-content: center;
+    font-family: Cabin, sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    font-size: calc(14px + .6vw);
+    ol {
+      margin-top: 30px;
+      list-style: none;
+      counter-reset: my-awesome-counter;
+    }
+    ol li {
+      padding: 10px;
+      counter-increment: my-awesome-counter;
+    }
+    ol li::before {
+      content: counter(my-awesome-counter) ".  ";
+      color: #7ba2e0;
+      font-weight: bold;
+    }
+  }
+}

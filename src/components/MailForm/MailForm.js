@@ -1,14 +1,13 @@
-import React, {Component} from 'react';
-import is from 'is_js'
+import React, { useState } from 'react';
+import Button from "./Button/Button";
 import './MailForm.scss'
-import Input from './Input/Input';
-//import TextArea from './TextArea/TextArea'
-import Button from './Button/Button';
-import axios from 'axios';
+import Input from "./Input/Input";
+import is from "is_js";
+import axios from "axios";
 
-class MailForm extends Component {
+const MailForm = (props) => {
 
-    initialState = {
+    const initialState = {
         isFormValid: false,
         formControls: {
             email: {
@@ -56,41 +55,10 @@ class MailForm extends Component {
         }
 
     };
+    const [formState, setFormState] = useState(initialState);
 
-    state = this.initialState;
+    function validateControl(value, validation) {
 
-    handleFormReset = () => {
-        console.log(this.state);
-        this.setState(()=>this.initialState);
-        console.log(this.state);
-        document.querySelector('#MailForm').reset();
-    };
-
-    async sendMail(){
-         const dataForm={
-             name: this.state.formControls.name.value,
-             email: this.state.formControls.email.value,
-             message: this.state.formControls.text.value,
-         };
-
-        try{
-            const response = await axios.post('http://dv-loginov.ru/util/send-mail.php', dataForm);
-            return response.data;
-        }
-        catch(e){
-            console.log(e)
-        }
-    }
-
-    submitHandler = event => {
-        event.preventDefault();
-        if (this.state.isFormValid){
-            this.sendMail()
-                .then((r) => this.handleFormReset());
-        }
-    };
-
-    validateControl(value, validation) {
         if (!validation) {
             return true
         }
@@ -116,31 +84,59 @@ class MailForm extends Component {
         return isValid
     }
 
-    onChangeHandler = (event, controlName) => {
-        const formControls = { ...this.state.formControls };
+    function onChangeHandler(event, controlName){
+
+        const formControls = { ...formState.formControls };
         const control = { ...formControls[controlName] };
 
         control.value = event.target.value;
         control.touched = true;
-
-        control.valid = this.validateControl(control.value, control.validation);
+        control.valid = validateControl(control.value, control.validation);
 
         formControls[controlName] = control;
 
         let isFormValid = true;
 
         Object.keys(formControls).forEach(name => {
-             isFormValid = formControls[name].valid && isFormValid
+            isFormValid = formControls[name].valid && isFormValid
         });
 
-        this.setState({
-             formControls, isFormValid
+        setFormState({
+             isFormValid, formControls
         });
-    };
+    }
 
-    renderInputs() {
-        return Object.keys(this.state.formControls).map((controlName, index) => {
-            const control = this.state.formControls[controlName];
+    async function sendMail(){
+        const dataForm={
+            name: formState.formControls.name.value,
+            email: formState.formControls.email.value,
+            message: formState.formControls.text.value,
+        };
+
+        try{
+            const response = await axios.post('http://dv-loginov.ru/util/send-mail.php', dataForm);
+            console.log(response.data);
+            return response.data;
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
+
+    function handleFormReset(){
+        setFormState(initialState);
+    }
+
+    function submitHandler( event ){
+        event.preventDefault();
+        if (formState.isFormValid){
+            sendMail().then(() => handleFormReset());
+        }
+    }
+
+    function renderInputs(){
+        return Object.keys(formState.formControls).map((controlName, index) => {
+            const control = formState.formControls[controlName];
             return (
                 <Input
                     key={controlName + index}
@@ -153,20 +149,18 @@ class MailForm extends Component {
                     placeholder={control.placeholder}
                     shouldValidate={!!control.validation}
                     errorMessage={control.errorMessage}
-                    onChange={event => this.onChangeHandler(event, controlName)}
+                    onChange={event => onChangeHandler(event, controlName)}
                 />
             )
         })
     }
 
-    render() {
-        return (
-            <form className="MailForm animated zoomIn" id="MailForm" onSubmit={this.submitHandler}>
-                {this.renderInputs()}
-                <Button />
-            </form>
-        );
-    }
-}
+    return (
+        <form className="MailForm" id="MailForm" onSubmit={submitHandler}>
+            {renderInputs()}
+            <Button valid={formState.isFormValid}/>
+        </form>
+    )
+};
 
 export default MailForm;

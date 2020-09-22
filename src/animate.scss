@@ -1,4 +1,19 @@
-
+@keyframes widthUp{
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes widthDown{
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
 
 @keyframes rotateLeft{
   from {
@@ -75,5 +90,39 @@
   to{
     box-shadow: none;
     background-color: #1b1b1b;
+  }
+}
+
+@keyframes swal2-show {
+  0% {
+    opacity: 0;
+    transform: scale(.7);
+  }
+
+  45% {
+    opacity: .45;
+    transform: scale(1.05);
+  }
+
+  80% {
+    opacity: .8;
+    transform: scale(.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes swal2-hide {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(.5);
+    opacity: 0;
   }
 }
